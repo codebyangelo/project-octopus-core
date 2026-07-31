@@ -1,0 +1,35 @@
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python bytecode & cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore root markdown files & stray documents (except README.md and LICENSE)
+/*.md
+!/README.md
+!/LICENSE
+
+# Ignore non-version directories (except docs/ and .git)
+/*
+!/docs/
+!/v0.*/
+!/v1.*/
+!/README.md
+!/LICENSE
+!/.gitignore
+
+# Ignore all Proprietary / Enterprise Add-On Files across all versions
+*red_team*
+*ssrf_standalone*
+*chimera*
+reports/
+*/reports/
+*.sarif
+*.log
+*.sqlite
+*.sqlite3
+*.db
