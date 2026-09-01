@@ -1,6 +1,6 @@
 # 🐙 Project Octopus
 
-[![CI: Python Test](https://github.com/codebyangelo/PROJECT-NAME/actions/workflows/test.yml/badge.svg)](https://github.com/codebyangelo/project-octopus-core/actions/workflows/test.yml)
+[![CI: Python Test](https://github.com/codebyangelo/project-octopus-core/actions/workflows/test.yml/badge.svg)](https://github.com/codebyangelo/project-octopus-core/actions/workflows/test.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![SARIF 2.1.0 Standard](https://img.shields.io/badge/SARIF-2.1.0-green.svg)](https://sarifweb.azurewebsites.net/)
