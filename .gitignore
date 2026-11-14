@@ -40,6 +40,10 @@ reports/
 *threat_db*
 packs/
 
+# Legacy and transitional directories (held back / superseded by src/octopus)
+v1.*/
+v2.*/
+
 # Temporary / OS files
 .DS_Store
 Thumbs.db
