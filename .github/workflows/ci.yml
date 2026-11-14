@@ -1,0 +1,55 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test & Invariant Verification
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install Package & Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+
+    - name: Run Unit Test Suite
+      run: |
+        python -m unittest discover tests
+
+    - name: Run Root Compatibility Test
+      run: |
+        python -m unittest test_octopus.py
+
+    - name: Self-Profile Verification
+      run: |
+        python -m octopus.cli --profile-only
+
+    - name: Generate Universal Verification SARIF Report
+      run: |
+        python -m octopus.cli --target . --output-dir ./reports || true
+
+    - name: Upload SARIF Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: sarif-report-python-${{ matrix.python-version }}
+        path: ./reports/*.sarif
+        if-no-files-found: ignore

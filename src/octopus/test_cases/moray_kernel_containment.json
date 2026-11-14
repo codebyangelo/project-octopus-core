@@ -1,0 +1,56 @@
+[
+  {
+    "id": "MORAY_EXEC_DENIAL",
+    "suite": "Ring 0 LSM Syscall Containment",
+    "payload": "execve",
+    "expected": "SAFE_BLOCK",
+    "severity": "Critical",
+    "svap_tier": "Tier 1: Memory Safety & Corruption",
+    "description": "Verifies quarantined process attempting execve is denied with -EPERM by bprm_check_security."
+  },
+  {
+    "id": "MORAY_SOCKET_WAN_BLOCK",
+    "suite": "Granular Network Isolation",
+    "payload": "socket_connect_wan",
+    "expected": "SAFE_BLOCK",
+    "severity": "High",
+    "svap_tier": "Tier 3: Tooling & Analysis Boundaries",
+    "description": "Verifies outbound socket connection to public WAN IP is severed with -EPERM under --block-wan."
+  },
+  {
+    "id": "MORAY_SOCKET_LOOPBACK_ALLOW",
+    "suite": "Granular Network Isolation",
+    "payload": "socket_connect_loopback",
+    "expected": "SAFE_ALLOW",
+    "severity": "Medium",
+    "svap_tier": "Tier 3: Tooling & Analysis Boundaries",
+    "description": "Verifies local IPC and loopback destinations (127.0.0.1/::1) are permitted past LSM under --block-wan."
+  },
+  {
+    "id": "MORAY_ANTI_TAMPER_BPF",
+    "suite": "Containment Self-Defense",
+    "payload": "sys_bpf",
+    "expected": "SAFE_BLOCK",
+    "severity": "Critical",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Verifies quarantined process attempting bpf() syscall is blocked with -EPERM by lsm/bpf hook."
+  },
+  {
+    "id": "MORAY_AUTO_TERMINATION",
+    "suite": "Dynamic Escalation",
+    "payload": "strike_escalation_kill",
+    "expected": "SAFE_BLOCK",
+    "severity": "Critical",
+    "svap_tier": "Tier 1: Memory Safety & Corruption",
+    "description": "Verifies repeat strikes or full strike trigger bpf_send_signal(9) active SIGKILL termination (exit 137)."
+  },
+  {
+    "id": "MORAY_BENIGN_FASTPATH",
+    "suite": "Benign Execution Baseline",
+    "payload": "unquarantined_baseline",
+    "expected": "SAFE_ALLOW",
+    "severity": "High",
+    "svap_tier": "Tier 3: Tooling & Analysis Boundaries",
+    "description": "Verifies unquarantined benign process executes normally in O(1) time without latency degradation (Invariant I_2)."
+  }
+]

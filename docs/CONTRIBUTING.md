@@ -24,7 +24,7 @@ All contributors must adhere to our **Defense-First Policy**:
 2. **Verify Code Changes**:
    Before submitting pull requests, run verification tests against target repositories to ensure zero regression failures:
    ```bash
-   python3 octopus_verifier.py --target /root/home/projects/project-octopus-git/v1.0.6
+   python3 octopus_verifier.py --target /root/home/projects/project-octopus/v1.0.6
    ```
 
 3. **Follow Standard Formatting**:

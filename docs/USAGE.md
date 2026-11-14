@@ -11,7 +11,7 @@ To run Project Octopus against any software target:
 
 1. **Navigate to the Version Directory**:
    ```bash
-   cd project-octopus-git/v1.0.6
+   cd project-octopus/v1.0.6
    ```
 
 2. **List Available Validation Profiles**:

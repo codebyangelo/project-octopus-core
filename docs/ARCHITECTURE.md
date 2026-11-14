@@ -56,13 +56,3 @@ graph TD
   * Outputs machine-readable JSON databases (`.json`) for automated regression tracking.
   * Generates visual SVG compliance status badges (`compliance_badge.svg`).
   * Produces comprehensive Markdown summary reports (`.md`).
-
----
-
-### 3. Execution Lifecycle & Data Flow
-
-1. **Invocation & Profile Selection**: `octopus_verifier.py` is invoked with `--target <path>` and optional `--profile <list>` flags.
-2. **Phase A (Discovery & Topology)**: `ProjectProfiler.profile()` scans the target directory, extracts imports, builds capability registries, and logs findings into `project_profile.md`.
-3. **Phase B (Scanner Initialization)**: The engine attempts to load an active WAF (`IronDome`). If unavailable, it checks for sandbox AST safety interfaces (`SandboxScannerWrapper`); if neither exists, it reverts to static pattern verification.
-4. **Phase C (Profile Execution)**: Selected profile test suites from `test_cases.json` are wrapped in syntax templates (Raw, Markdown, HTML, JSON, YAML, CSV) and executed against the active scanner interface.
-5. **Outcome Alignment & Reporting**: Results are evaluated, severity compliance breakdowns are computed, and report artifacts (SARIF, JSON, MD, SVG) are saved to `./reports/`.

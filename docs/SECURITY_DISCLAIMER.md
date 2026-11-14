@@ -1,3 +1,4 @@
+# SECURITY_DISCLAIMER.md
 # Security Disclaimer & Responsible Disclosure Notice
 
 > [!IMPORTANT]

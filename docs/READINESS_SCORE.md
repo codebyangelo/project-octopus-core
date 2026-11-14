@@ -1,7 +1,7 @@
 # READINESS_SCORE.md
 ## Phase 19 - Repository Readiness Evaluation Report
 
-This document records the formal quality assessment, readiness score breakdown, and evaluation audit for **Project Octopus** (`project-octopus-git`).
+This document records the formal quality assessment, readiness score breakdown, and evaluation audit for **Project Octopus** (`project-octopus`).
 
 ---
 
@@ -9,7 +9,7 @@ This document records the formal quality assessment, readiness score breakdown, 
 
 * **Repository Readiness Score**: **96 / 100**
 * **Assigned Grade**: **A+ (Production Ready)**
-* **Audit Target**: `project-octopus-git` (`v1.0.6`)
+* **Audit Target**: `project-octopus` (`v1.0.6`)
 * **Evaluation Date**: 2026-07-30
 * **Licensing**: Apache License 2.0 (`LICENSE`)
 * **Security & Responsible Disclosure Boundary**: Defense-first policy verified (`SECURITY_DISCLAIMER.md`)

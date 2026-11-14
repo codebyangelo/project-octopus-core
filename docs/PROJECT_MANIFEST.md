@@ -1,14 +1,14 @@
 # PROJECT_MANIFEST.md
 ## Phase 0 - Project Inventory Manifest
 
-This document records the repository structure, file counts, module components, verification profiles, and technology stack of **Project Octopus** (`project-octopus-git`).
+This document records the repository structure, file counts, module components, verification profiles, and technology stack of **Project Octopus** (`project-octopus`).
 
 ---
 
 ### 1. General Project Information
 
 * **Project Name:** Project Octopus
-* **Target Directory:** `project-octopus-git`
+* **Target Directory:** `project-octopus`
 * **Current Version:** `v1.0.6` (Phase C: Validation Profiles & Agnostic Verification)
 * **Architecture Style:** Agnostic Security Verification & Profile-Based Compliance Platform
 * **Primary Language:** Python 3.10+ (tested with Python 3.13)
@@ -52,11 +52,11 @@ This document records the repository structure, file counts, module components, 
 
 ### 4. Code Base Components (v1.0.6)
 
-* [octopus_verifier.py](file:///root/home/projects/project-octopus-git/v1.0.6/octopus_verifier.py): Primary profile-based verification and compliance platform.
+* [octopus_verifier.py](file:///root/home/projects/project-octopus/v1.0.6/octopus_verifier.py): Primary profile-based verification and compliance platform.
 * `test_cases.json`: Test payload database containing rule definitions across security taxonomy families.
-* [novel_red_team.py](file:///root/home/projects/project-octopus-git/v1.0.6/novel_red_team.py): Red-team verification harness.
-* [red_team_test.py](file:///root/home/projects/project-octopus-git/v1.0.6/red_team_test.py): Standalone shell command injection test runner.
-* [test_ssrf_standalone.py](file:///root/home/projects/project-octopus-git/v1.0.6/test_ssrf_standalone.py): Standalone network boundary SSRF verifier.
+* [novel_red_team.py](file:///root/home/projects/project-octopus/v1.0.6/novel_red_team.py): Red-team verification harness.
+* [red_team_test.py](file:///root/home/projects/project-octopus/v1.0.6/red_team_test.py): Standalone shell command injection test runner.
+* [test_ssrf_standalone.py](file:///root/home/projects/project-octopus/v1.0.6/test_ssrf_standalone.py): Standalone network boundary SSRF verifier.
 
 ---
 

@@ -1,13 +1,13 @@
 # PROJECT_EVIDENCE.md
 ## Pass A - Evidence Extraction Log for Project Octopus
 
-This document contains raw factual quotes, file structures, table schemas, and empirical metrics extracted directly from `project-octopus-git` without inference or speculation.
+This document contains raw factual quotes, file structures, table schemas, and empirical benchmark data directly gathered from the repository without inference or speculation.
 
 ---
 
 ### 1. General Project Inventory & Root Structure
 
-* **Root Path:** `/root/home/projects/project-octopus-git`
+* **Root Path:** `/root/home/projects/project-octopus`
 * **Total Version Directories:** 106 directories (`v0.0.1` through `v1.0.6`).
 * **Total File Count:** 11,297 files.
 * **File Breakdown by Extension:**

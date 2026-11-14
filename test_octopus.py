@@ -2,21 +2,25 @@ import unittest
 import os
 import sys
 
-# Need to append v1.0.6 to sys path to import octopus_verifier
-sys.path.insert(0, os.path.abspath('v1.0.6'))
+# Add src to sys.path
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src'))
 
-from octopus_verifier import ProjectProfiler
+import octopus
+from octopus.core.profiler import PolyglotProfiler
+from octopus.core.engine import UniversalEngine
+
 
 class TestOctopus(unittest.TestCase):
+    def test_package_metadata(self):
+        self.assertEqual(octopus.__version__, "2.0.0")
+        self.assertEqual(octopus.__author__, "Angelo Ayton")
+
     def test_project_profiler_init(self):
-        # Create a dummy python file in current dir
-        with open("dummy_test.py", "w") as f:
-            f.write("import os\nimport sys\n")
-            
-        profiler = ProjectProfiler(".")
-        self.assertEqual(profiler.target_path, os.path.abspath("."))
-        
-        os.remove("dummy_test.py")
+        profiler = PolyglotProfiler(".")
+        profile = profiler.profile()
+        self.assertEqual(profile.target_path, os.path.abspath("."))
+        self.assertTrue(profile.files_count > 0)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,35 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+
 # Virtual environments
 venv/
 .venv/
 env/
 
-# Python bytecode & cache
-__pycache__/
-*.pyc
-*.pyo
+# Testing & Linting
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# Ignore root markdown files & stray documents (except README.md and LICENSE)
-/*.md
-!/README.md
-!/LICENSE
-
-# Ignore non-version directories (except docs/ and .git)
-/*
-!/docs/
-!/v0.*/
-!/v1.*/
-!/README.md
-!/LICENSE
-!/.gitignore
-
-# Ignore all Proprietary / Enterprise Add-On Files across all versions
-*red_team*
-*ssrf_standalone*
-*chimera*
+# Local Generated Reports & Diagnostics
 reports/
 */reports/
 *.sarif
-*.log
 *.sqlite
 *.sqlite3
 *.db
+*.log
+
+# Dual-Use Threat Assets & Internal Red-Team Payloads (Held Back for Security)
+*red_team*
+*ssrf_standalone*
+*threat_db*
+packs/
+
+# Temporary / OS files
+.DS_Store
+Thumbs.db

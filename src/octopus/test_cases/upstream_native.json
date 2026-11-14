@@ -1,0 +1,146 @@
+[
+  {
+    "id": "R2_MATH_OVERFLOW_64BIT",
+    "suite": "Arithmetic Boundary Clamping",
+    "payload": "?v 0x10000000000000000",
+    "expected": "SAFE_BLOCK",
+    "severity": "High",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Evaluates arithmetic 64-bit unsigned integer overflow handling and bounds clamping."
+  },
+  {
+    "id": "R2_MATH_ARITHMETIC_WRAP",
+    "suite": "Arithmetic Boundary Clamping",
+    "payload": "?v 0xFFFFFFFFFFFFFFFF + 1",
+    "expected": "SAFE_BLOCK",
+    "severity": "High",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Evaluates 64-bit integer wrap boundary behavior during constant addition."
+  },
+  {
+    "id": "R2_MATH_DIVIDE_BY_ZERO",
+    "suite": "Arithmetic Boundary Clamping",
+    "payload": "?v 100 / 0",
+    "expected": "SAFE_BLOCK",
+    "severity": "High",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Verifies that integer division by zero is safely trapped without SIGFPE or interpreter crash."
+  },
+  {
+    "id": "R2_MATH_MODULO_BY_ZERO",
+    "suite": "Arithmetic Boundary Clamping",
+    "payload": "?v 100 % 0",
+    "expected": "SAFE_BLOCK",
+    "severity": "High",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Verifies that modulo by zero is safely trapped without SIGFPE or interpreter crash."
+  },
+  {
+    "id": "R2_SEEK_UNDERFLOW_SIGNED",
+    "suite": "Seek Offset Boundary",
+    "payload": "s -0x8000000000000001",
+    "expected": "SAFE_BLOCK",
+    "severity": "High",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Verifies that signed 64-bit underflow seeks are clamped and do not produce undefined offsets."
+  },
+  {
+    "id": "R2_SEEK_EXTREME_NEGATIVE",
+    "suite": "Seek Offset Boundary",
+    "payload": "s -0x8000000000000000",
+    "expected": "SAFE_BLOCK",
+    "severity": "High",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Verifies that INT64_MIN seek offset does not produce signed integer overflow."
+  },
+  {
+    "id": "R2_SEEK_STATE_PRESERVATION",
+    "suite": "CLI State Integrity",
+    "payload": "s 0x1000; s nonexistent_symbol_xyz; ?v $$",
+    "expected": "SAFE_BLOCK",
+    "severity": "Critical",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Verifies that an invalid seek expression preserves the current address and does not silently reset to 0x0."
+  },
+  {
+    "id": "R2_SEEK_RELATIVE_FORWARD",
+    "suite": "Seek Offset Boundary",
+    "payload": "s+ 0x10; ?v $$",
+    "expected": "SAFE_ALLOW",
+    "severity": "Medium",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Verifies valid relative seek offset calculation and state update."
+  },
+  {
+    "id": "R2_SEEK_OPCODE_HELP_FALLTHROUGH",
+    "suite": "Command Dispatch & Help Safety",
+    "payload": "so?",
+    "expected": "SAFE_ALLOW",
+    "severity": "High",
+    "svap_tier": "Tier 4: Parser Robustness / Edge-Case DoS",
+    "description": "Verifies opcode seek help query does not fall through into opcode seeking with '?' as operand."
+  },
+  {
+    "id": "R2_SEEK_ALIGN_HELP_FALLTHROUGH",
+    "suite": "Command Dispatch & Help Safety",
+    "payload": "sa?",
+    "expected": "SAFE_ALLOW",
+    "severity": "High",
+    "svap_tier": "Tier 4: Parser Robustness / Edge-Case DoS",
+    "description": "Verifies seek align help query does not fall through into align seeking."
+  },
+  {
+    "id": "R2_SEEK_ARG_WHITESPACE_TRIM",
+    "suite": "Parser Robustness",
+    "payload": "so   0x10",
+    "expected": "SAFE_ALLOW",
+    "severity": "Medium",
+    "svap_tier": "Tier 4: Parser Robustness / Edge-Case DoS",
+    "description": "Verifies leading whitespace before seek arguments is cleanly trimmed by the parser."
+  },
+  {
+    "id": "R2_WRITE_INVALID_EXPR",
+    "suite": "Command Dispatch & Help Safety",
+    "payload": "w 0x100 invalid_expr",
+    "expected": "SAFE_BLOCK",
+    "severity": "High",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Verifies that invalid write expression is rejected without corrupting target buffers."
+  },
+  {
+    "id": "R2_CACHE_HYGIENE_LINES",
+    "suite": "Cache Hygiene & State Management",
+    "payload": "e lines.to=invalid_val; sl+1",
+    "expected": "SAFE_BLOCK",
+    "severity": "Medium",
+    "svap_tier": "Tier 2: State & Memory Integrity",
+    "description": "Verifies that line-seek cache is properly invalidated upon configuration error."
+  },
+  {
+    "id": "R2_FORMAT_STRING_PRINT",
+    "suite": "Format String Boundary",
+    "payload": "?e %x%x%x%s%n",
+    "expected": "SAFE_ALLOW",
+    "severity": "Critical",
+    "svap_tier": "Tier 1: Memory Safety & Corruption",
+    "description": "Passes format string tokens to echo command verifying safe literal printing without memory read/write."
+  },
+  {
+    "id": "R2_PARSER_RECURSIVE_HELP",
+    "suite": "Command Recursion Limits",
+    "payload": "???",
+    "expected": "SAFE_ALLOW",
+    "severity": "Low",
+    "svap_tier": "Tier 5: Software Hygiene & Diagnostics",
+    "description": "Verifies recursive command help output does not loop infinitely."
+  },
+  {
+    "id": "R2_PARSER_CLEAN_EXIT",
+    "suite": "Parser Robustness",
+    "payload": "q",
+    "expected": "SAFE_ALLOW",
+    "severity": "Medium",
+    "svap_tier": "Tier 4: Parser Robustness / Edge-Case DoS",
+    "description": "Evaluates clean exit command without parser stall or memory corruption."
+  }
+]

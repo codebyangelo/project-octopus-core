@@ -24,7 +24,7 @@ Before installing Project Octopus, ensure your environment meets the following r
 1. **Clone or Extract the Repository**:
    ```bash
    git clone https://github.com/your-org/project-octopus.git
-   cd project-octopus-git/v1.0.6
+   cd project-octopus/v1.0.6
    ```
 
 2. **Set Up a Virtual Environment** *(Recommended)*:
@@ -51,12 +51,12 @@ Verify that Project Octopus is properly installed by running profile queries and
 
 2. **Run Automatic Repository Profiling & Verification**:
    ```bash
-   python3 octopus_verifier.py --target /root/home/projects/project-octopus-git/v1.0.6
+   python3 octopus_verifier.py --target /root/home/projects/project-octopus/v1.0.6
    ```
 
 3. **Run Specific Validation Profiles** (e.g. Generic & Optimizer):
    ```bash
-   python3 octopus_verifier.py --target /root/home/projects/project-hermit-git/v0.1.9 --profile generic,optimizer
+   python3 octopus_verifier.py --target /root/home/projects/project-hermit/v0.1.9 --profile generic,optimizer
    ```
 
 4. **Inspect Generated Report Outputs**:
